@@ -1,0 +1,300 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+/**
+ * Start Main Roules
+**/
+
+:root {
+    --main-color: #E55604;
+    --theme-color: #fff;
+    --bg-color: #ccc;
+    --text-color: #222;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    outline: 0;
+    box-sizing: border-box;
+}
+
+body.dark {
+    --theme-color: #0E121B;
+    --bg-color: #20242C;
+    --text-color: #fff;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--theme-color);
+    color: var(--text-color);
+    transition: all 0.5s linear;
+    -webkit-transition: all 0.5s linear;
+    -moz-transition: all 0.5s linear;
+    -ms-transition: all 0.5s linear;
+    -o-transition: all 0.5s linear;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+.container {
+    padding: 0 30px;
+    margin: 0 auto;
+}
+
+/**
+ * Small window (Phones)
+**/
+@media (min-width: 576px) {
+    .container {
+        width: 560px;
+    }
+}
+
+/**
+ * Medium window (Tablets)
+**/
+@media (min-width: 768px) {
+    .container {
+        width: 750px;
+    }
+}
+
+/**
+ * Larg window (Laptops)
+**/
+@media (min-width: 992px) {
+    .container {
+        width: 980px;
+    }
+}
+
+/**
+ * XLarg window (Desktop)
+**/
+@media (min-width: 1200px) {
+    .container {
+        width: 1190px;
+    }
+}
+
+/**
+ * End Main Roules
+**/
+
+/**
+ * Start Header Section
+**/
+
+header {
+    width: 100%;
+    height: 70px;
+}
+
+header .container {
+    height: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header .logo {
+    font-size: 20px;
+}
+
+header .logo span {
+    color: var(--main-color);
+}
+
+header .dark-mode {
+    position: relative;
+    border: 1px solid var(--text-color);
+    width: 60px;
+    height: 30px;
+    cursor: pointer;
+    z-index: 10;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+}
+
+header .dark-mode i {
+    position: absolute;
+    font-size: 20px;
+    top: 50%;
+    right: 5px;
+    z-index: 5;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    /*transition: all 0.5s linear;
+    -webkit-transition: all 0.5s linear;
+    -moz-transition: all 0.5s linear;
+    -ms-transition: all 0.5s linear;
+    -o-transition: all 0.5s linear;
+    */
+    animation: back 0.5s forwards;
+    -webkit-animation: back 0.5s forwards;
+}
+
+header .dark-mode.active i {
+    animation: go 0.5s forwards;
+    -webkit-animation: go 0.5s forwards;
+}
+
+@keyframes go {
+    from {
+        right: 5px;
+    }
+    to {
+        right: 35px;
+    }
+}
+
+@keyframes back {
+    from {
+        right: 35px;
+    }
+    to {
+        right: 5px;
+    }
+}
+
+header .dark-mode.active i.fa-moon,
+header .dark-mode i.fa-sun {
+    display: block;
+}
+
+header .dark-mode.active i.fa-sun,
+header .dark-mode i.fa-moon {
+    display: none;
+}
+
+/**
+ * End Header Section
+**/
+
+/**
+ * Start Head Section
+**/
+
+.head .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.head .title {
+    font-size: 30px;
+}
+
+.head .search {
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+.head .search input,
+.head .search input::placeholder {
+    border: none;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    background-color: transparent;
+    color: var(--text-color)
+}
+
+.head .search input{
+    border: none;
+}
+
+/**
+ * End Head Section
+**/
+
+/**
+ * Start markets Section
+**/
+
+.markets {
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+.markets .markets-wrapper {
+    width: 100%;
+    border: 1px solid #ccc;
+    overflow: hidden;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+.markets .markets-wrapper .top {
+    padding: 20px;
+    display: flex;
+    background-color: var(--bg-color);
+}
+
+.markets .markets-wrapper .col {
+    width: 25%;
+    font-size: 14px;
+}
+
+.markets .markets-wrapper .col span {
+    opacity: 0.7;
+}
+
+.markets .markets-wrapper .row {
+    padding: 20px;
+    display: flex;
+}
+
+.markets .markets-wrapper .row:not(:last-child) {
+    border-bottom: 1px solid #ccc;
+}
+
+.markets .markets-wrapper .red {
+    color: red;
+}
+
+.markets .markets-wrapper .green {
+    color: green;
+}
+
+/**
+ * End markets Section
+**/
+
+/**
+ * Start Footer Section
+**/
+
+footer p {
+    padding: 20px;
+    text-align: center;
+}
+
+/**
+ * End Footer Section
+**/

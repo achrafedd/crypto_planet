@@ -1,0 +1,61 @@
+<%- include('./components/Header.ejs'); %>
+    <main>
+        <section class="head">
+            <div class="container">
+                <h2 class="title">Markets</h2>
+                <div class="search">
+                    <input type="text" name="" placeholder="Search" />
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+            </div>
+        </section>
+        <section class="markets">
+            <div class="container">
+                <div class="markets-wrapper">
+                    <div class="top">
+                        <div class="col">Markets</div>
+                        <div class="col">Last Price</div>
+                        <div class="col">24h Change</div>
+                        <div class="col">24h Volume</div>
+                    </div>
+                    <div class="bottom">
+                        <% tickers.filter((ticker) => { %>
+                            <% let per = ((ticker.last_trade_price - ticker.price_24h) / ticker.price_24h) * 100; %>
+                            <% if (!isNaN(per) &&
+                                    isFinite(per) &&
+                                    symbols[ticker.symbol].status == 'open') { %>
+                                <div class="row">
+                                    <div class="col">
+                                        <%= symbols[ticker.symbol].base_currency %> - <span><%= symbols[ticker.symbol].counter_currency %></span>
+                                    </div>
+                                    <div class="col">
+                                        <% if (symbols[ticker.symbol].counter_currency == 'USD') { %>
+                                            <%= "$"%>
+                                        <%}else if(symbols[ticker.symbol].counter_currency == 'EUR'){%>
+                                            <%= '€' %>
+                                        <%}else if(symbols[ticker.symbol].counter_currency == 'GBP'){%>
+                                            <%= '£' %>
+                                        <%}%>
+                                        <%= ticker.last_trade_price %>
+                                        <%if(symbols[ticker.symbol].counter_currency == 'USDT'){%>
+                                            <%= 'USDT' %>
+                                        <%}else if(symbols[ticker.symbol].counter_currency == 'BTC'){%>
+                                            <%= 'BTC' %>
+                                        <%}%>
+                                    </div>
+                                    <div class="col <%= per < 0 ? "red" : "green" %>">
+                                        <%= per >= 0 ? "+" : "" %> <%= per.toFixed(2) %> %
+                                    </div>
+                                    <div class="col">
+                                        <%= ticker.volume_24h == 0 ? ticker.volume_24h.toFixed(6) : ticker.volume_24h %>
+                                        <%= symbols[ticker.symbol].base_currency %>
+                                    </div>
+                                </div>
+                            <% } %>
+                        <% }) %>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+<%- include('./components/Footer.ejs'); %>
